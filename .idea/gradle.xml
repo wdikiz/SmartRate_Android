@@ -10,7 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/easyrate" />
+            <option value="$PROJECT_DIR$/smartrate" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />
