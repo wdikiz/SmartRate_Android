@@ -47,7 +47,7 @@ afterEvaluate {
 
                 pom {
                     name = 'SmartRate'
-                    description = 'A library for easy rating prompts'
+                    description = 'A library for easy rating prompts for android'
                     url = 'https://github.com/wdikiz/SmartRate_Android'
                     licenses {
                         license {
