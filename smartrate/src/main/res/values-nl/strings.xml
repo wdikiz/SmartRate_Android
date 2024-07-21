@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Smart rate</string>
+    <string name="rate_us">Beoordeel ons</string>
+    <string name="love_this_app">Tarief</string>
+    <string name="first_msg">Uw beoordeling zal ons helpen om het beter te doen.</string>
+    <string name="review_1">Dat is niet de ervaring die we graag willen dat je hebt. Deel hieronder uw feedback.</string>
+    <string name="review_2">Oh Oh! Kunt u ons meer vertellen over wat we kunnen verbeteren\?</string>
+    <string name="review_3">Bedankt voor uw feedback. Is er iets specifieks waarvan u denkt dat we het kunnen verbeteren\?</string>
+    <string name="review_4">Bedankt! uw feedback inspireert ons om te verbeteren.</string>
+    <string name="review_5">Bedankt! Jouw geweldige feedback maakte onze dag goed! Beoordeel ons alstublieft in de Play Store.</string>
+    <string name="write_feedback">Schrijf feedback</string>
+    <string name="rate">Evaluatie</string>
+    <string name="dev">DEV</string>
+    <string name="ui">gebruikersinterface</string>
+    <string name="qa">QA</string>
+    <string name="op">OP</string>
+    <string name="pm">P.M</string>
+    <string name="no_email_client">Er zijn geen e-mailclients geïnstalleerd.</string>
+    <string name="write_tour_feedback_here">Schrijf hier tourfeedback....</string>
+    <string name="succes">Succes</string>
+    <string name="thank_you">Bedankt !</string>
+    <string name="by_making_your_voice_heard_you_help_us_improve_our_application">Door uw stem te laten horen, helpt u ons verbeteren\n onze applicatie</string>
+    <string name="give_feedback">Geef feedback</string>
+    <string name="how_can_we_improve_the_application">Hoe kunnen we de applicatie verbeteren\?</string>
+    <string name="submit_feedback">Feedback verzenden</string>
+    <string name="did_you_like_our_app">Vond je onze app leuk\?</string>
+    <string name="poor">zeer slecht</string>
+    <string name="bad">Slecht</string>
+    <string name="average">Gemiddeld</string>
+    <string name="good">Goed</string>
+    <string name="excellent">Uitstekend</string>
+    <string name="remind_me_later">Herinner me later</string>
+</resources>

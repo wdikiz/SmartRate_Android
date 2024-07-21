@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Smart rate</string>
+    <string name="rate_us">Bizi değerlendirin</string>
+    <string name="love_this_app">Oran</string>
+    <string name="first_msg">Derecelendirmeniz daha iyisini yapmamıza yardımcı olacaktır.</string>
+    <string name="review_1">Bu, yaşamanızı istediğimiz deneyim değil. Lütfen geri bildiriminizi aşağıda paylaşın.</string>
+    <string name="review_2">Ah ah! Neleri geliştirebileceğimiz hakkında bize daha fazla bilgi verebilir misiniz\?</string>
+    <string name="review_3">Geri bildiriminiz için teşekkür ederiz. Geliştirebileceğimizi düşündüğünüz belirli bir şey var mı\?</string>
+    <string name="review_4">Teşekkür ederim! Geri bildiriminiz gelişmemiz için bize ilham veriyor.</string>
+    <string name="review_5">Teşekkürler! Harika geri bildirimleriniz günümüzü güzelleştirdi! lütfen bizi Play Store\'da derecelendirin.</string>
+    <string name="write_feedback">Geri Bildirim Yaz</string>
+    <string name="rate">Değerlendirme</string>
+    <string name="dev">DEV</string>
+    <string name="ui">kullanıcı arayüzü</string>
+    <string name="qa">KG</string>
+    <string name="op">OP</string>
+    <string name="pm">ÖĞLEDEN SONRA</string>
+    <string name="no_email_client">Yüklü e-posta istemcisi yok.</string>
+    <string name="write_tour_feedback_here">Tur geri bildirimlerinizi buraya yazın....</string>
+    <string name="succes">Başarı</string>
+    <string name="thank_you">Teşekkür ederim !</string>
+    <string name="by_making_your_voice_heard_you_help_us_improve_our_application">Sesinizi duyurarak mobil uygulamamızı geliştirmemize yardımcı\n olursunuz</string>
+    <string name="give_feedback">Geri bildirimde bulunun</string>
+    <string name="how_can_we_improve_the_application">Uygulamayı nasıl geliştirebiliriz\?</string>
+    <string name="submit_feedback">Geri bildirim gönder</string>
+    <string name="did_you_like_our_app">Uygulamamızı beğendiniz mi\?</string>
+    <string name="poor">çok Kötü</string>
+    <string name="bad">Kötü</string>
+    <string name="average">Ortalama</string>
+    <string name="good">İyi</string>
+    <string name="excellent">Mükemmel</string>
+    <string name="remind_me_later">Daha sonra hatırlat</string>
+</resources>

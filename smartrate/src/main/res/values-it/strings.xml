@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Smart rate</string>
+    <string name="rate_us">Valutaci</string>
+    <string name="love_this_app">Valutare</string>
+    <string name="first_msg">La tua valutazione ci aiuterà a fare meglio.</string>
+    <string name="review_1">Non è l\'esperienza che vorremmo che tu vivessi. Per favore condividi il tuo feedback qui sotto.</string>
+    <string name="review_2">Uh Oh! Potresti dirci di più su cosa potremmo migliorare\?</string>
+    <string name="review_3">Grazie per il tuo feedback, c\'è qualcosa di specifico che pensi che potremmo migliorare\?</string>
+    <string name="review_4">Grazie! il tuo feedback ci ispira a migliorare.</string>
+    <string name="review_5">Grazie! Il tuo fantastico feedback ha appena rallegrato la nostra giornata! valutaci sul Play Store.</string>
+    <string name="write_feedback">Scrivi feedback</string>
+    <string name="rate">valutazione</string>
+    <string name="dev">DEV</string>
+    <string name="ui">interfaccia utente</string>
+    <string name="qa">QA</string>
+    <string name="op">OPERAZIONE</string>
+    <string name="pm">PM</string>
+    <string name="no_email_client">Non sono installati client di posta elettronica.</string>
+    <string name="write_tour_feedback_here">Scrivi qui il tuo feedback sul tour....</string>
+    <string name="succes">Successo</string>
+    <string name="thank_you">Grazie !</string>
+    <string name="by_making_your_voice_heard_you_help_us_improve_our_application">Facendo sentire la tua voce, ci aiuti a migliorare\n la nostra applicazione</string>
+    <string name="give_feedback">Dare un feedback</string>
+    <string name="how_can_we_improve_the_application">Come possiamo migliorare l\'applicazione\?</string>
+    <string name="submit_feedback">Invia feedback</string>
+    <string name="did_you_like_our_app">Ti è piaciuta la nostra App\?</string>
+    <string name="poor">molto male</string>
+    <string name="bad">male</string>
+    <string name="average">medio</string>
+    <string name="good">buono</string>
+    <string name="excellent">eccellente</string>
+    <string name="remind_me_later">ricordamelo più tardi</string>
+</resources>

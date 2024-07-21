@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Smart rate</string>
+    <string name="rate_us">تقييم التطبيق</string>
+    <string name="love_this_app">اعجبني التطبيق</string>
+    <string name="first_msg">تقييمك سيساعدنا على القيام بعمل أفضل.</string>
+    <string name="review_1">هذه ليست التجربة التي نود أن تحصل عليها. يرجى مشاركة ملاحظاتك أدناه.</string>
+    <string name="review_2">هل يمكنك إخبارنا بالمزيد حول ما يمكننا تحسينه؟</string>
+    <string name="review_3">شكرًا لتعليقاتك، هل هناك شيء محدد تعتقد أنه يمكننا تحسينه؟</string>
+    <string name="review_4">شكرًا لكم على دعمكم لنا! يرجى تقييمنا على  النافدة القادمة.</string>
+    <string name="review_5">شكرًا لكم على دعمكم لنا! يرجى تقييمنا على  النافدة القادمة.</string>
+    <string name="write_feedback">اكتب تعليقك</string>
+    <string name="rate">تقييم</string>
+    <string name="dev">ديف</string>
+    <string name="ui">واجهة المستخدم</string>
+    <string name="qa">ضمان الجودة</string>
+    <string name="op">OP</string>
+    <string name="pm">مساءً</string>
+    <string name="no_email_client">لا يوجد عملاء بريد إلكتروني مثبتون.</string>
+    <string name="write_tour_feedback_here">اكتب ملاحظاتك حول تجربتك هنا....</string>
+    <string name="succes">تم بنجاح</string>
+    <string name="thank_you">شكرًا لك !</string>
+    <string name="by_making_your_voice_heard_you_help_us_improve_our_application">من خلال جعل صوتك مسموعا، فإنك تساعدنا على التحسن\n تطبيقنا</string>
+    <string name="give_feedback">كتابة تعليق</string>
+    <string name="how_can_we_improve_the_application">كيف يمكننا تحسين التطبيق؟</string>
+    <string name="submit_feedback">إرسال </string>
+    <string name="did_you_like_our_app">هل أعجبك تطبيقنا؟</string>
+    <string name="poor">سيئ للغاية</string>
+    <string name="bad">سيئ</string>
+    <string name="average">متوسط</string>
+    <string name="good">جيد</string>
+    <string name="excellent">ممتاز</string>
+    <string name="remind_me_later">لاحقًا</string>
+</resources>

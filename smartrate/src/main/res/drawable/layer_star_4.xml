@@ -1,0 +1,11 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/star_background"
+        android:drawable="@drawable/star_grey" />
+
+    <item
+        android:id="@+id/star_foreground"
+        android:drawable="@drawable/ic_emoji_good"
+        android:gravity="center"
+        android:top="10dp"        />
+</layer-list>
