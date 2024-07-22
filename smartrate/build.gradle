@@ -12,6 +12,11 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+//    compileOptions {
+//        sourceCompatibility 11
+//        targetCompatibility 11
+//    }
+
     buildTypes {
         release {
             minifyEnabled false
