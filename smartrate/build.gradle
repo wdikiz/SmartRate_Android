@@ -39,41 +39,57 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
 
+
 afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
+                from components.findByName('release')
                 groupId = 'com.github.wdikiz'
                 artifactId = 'smartrate'
                 version = '1.0.0'
-                artifact("$buildDir/outputs/aar/smartrate-release.aar") {
-                    builtBy 'assembleRelease'
-                }
-
-                pom {
-                    name = 'SmartRate'
-                    description = 'A library for easy rating prompts for android'
-                    url = 'https://github.com/wdikiz/SmartRate_Android'
-                    licenses {
-                        license {
-                            name = 'The Apache License, Version 2.0'
-                            url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                        }
-                    }
-                    developers {
-                        developer {
-                            id = 'wdikiz'
-                            name = 'Walid ZOUBIR'
-                            email = 'your-email@example.com'
-                        }
-                    }
-                    scm {
-                        connection = 'scm:git:github.com/wdikiz/SmartRate_Android.git'
-                        developerConnection = 'scm:git:ssh://github.com:wdikiz/SmartRate_Android.git'
-                        url = 'https://github.com/wdikiz/SmartRate_Android'
-                    }
-                }
             }
         }
     }
 }
+
+//
+//afterEvaluate {
+//    publishing {
+//        publications {
+//            release(MavenPublication) {
+//                from components.release
+//                groupId = 'com.github.wdikiz'
+//                artifactId = 'smartrate'
+//                version = '1.0.0'
+//                artifact("$buildDir/outputs/aar/smartrate-release.aar") {
+//                    builtBy 'assembleRelease'
+//                }
+//
+//                pom {
+//                    name = 'SmartRate'
+//                    description = 'A library for easy rating prompts for android'
+//                    url = 'https://github.com/wdikiz/SmartRate_Android'
+//                    licenses {
+//                        license {
+//                            name = 'The Apache License, Version 2.0'
+//                            url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+//                        }
+//                    }
+//                    developers {
+//                        developer {
+//                            id = 'wdikiz'
+//                            name = 'Walid ZOUBIR'
+//                            email = 'your-email@example.com'
+//                        }
+//                    }
+//                    scm {
+//                        connection = 'scm:git:github.com/wdikiz/SmartRate_Android.git'
+//                        developerConnection = 'scm:git:ssh://github.com:wdikiz/SmartRate_Android.git'
+//                        url = 'https://github.com/wdikiz/SmartRate_Android'
+//                    }
+//                }
+//            }
+//        }
+//    }
+//}
