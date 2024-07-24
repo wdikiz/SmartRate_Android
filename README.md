@@ -6,24 +6,30 @@
 # SmartRate Android
 
 SmartRate is an Android library designed to manage app ratings and feedback efficiently. SmartRate helps you collect negative feedback directly through your server, allowing you to improve your app without negatively impacting its visibility on the Play Store.
+
+![Review Screen recod flow](SmartRate Android _flow.gif)
+
 It provides a user-friendly and visually appealing dialog that encourages users to rate the app on Google Play. The Call-To-Action (CTA) button dynamically changes based on the user's rating:
 
 - **Write Feedback:** if the review is between 1 & 3 stars ths user is invited to send a feedback 
+
 - **Rate:** - If the review is 4 or 5 stars, the Google in-app review flow is launched
+
+![InApp Review Screen](playstorereview.png)
 
 The library comprises three main views:
 
 1. The primary review dialog.
 
-
+![Primary Review Screen](photo_3_2024-07-24_15-20-11.jpg)
 
 2. The feedback view only for reviews between 1 & 3 stars.
 
-
+![Feedback Screen](photo_2_2024-07-24_15-20-11.jpg)
 
 3. The thank you view, which disappears after 5 seconds or upon closing.
 
-
+![Thank you Screen](photo_1_2024-07-24_15-20-11.jpg)
 
 ## Getting Started
 
@@ -140,9 +146,9 @@ Customize when the dialog should be shown. By default, the dialog will be shown 
 
 ```java
 SmartRate.init(MainActivity.this)
-    .setAfterXLaunches(10) // App launched more than 10 times
-    .setShowAgainAfterNegative(7) // Show again 7 days after negative feedback
-    .setUrlFeedback("https://tferej.com/sendFeedback.php")
+    .setAfterXLaunches(2) // App launched more than 2 times
+    .setShowAgainAfterNegative(7) // Show again after 7 launch after negative feedback
+    .setUrlFeedback("https://example.com/sendFeedback.php")
     .setInAppReviewEnabled(true)
     .setLaunchReviewDirectly(true)
     .setOnCloseClickListener(() -> {
