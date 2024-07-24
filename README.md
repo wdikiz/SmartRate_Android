@@ -98,6 +98,8 @@ SmartRate.init(MainActivity.this)
 
 - **`setAfterXLaunches(2)`**: Configures the dialog to show after the app has been launched a specified number of times. This can be useful for engaging users who haven't interacted with the app over multiple sessions.
 
+- Still under test : - **`setShowAgainAfterNegative(2)`**: Configures the dialog to reappear after the app is launched twice post negative feedback.
+
 - **`setUrlFeedback("https://example.com/sendFeedback.php")`**: Configures the URL to send negative feedback, allowing you to gather insights and improve the app without affecting its visibility on the store. The following PHP script can be used on your server to handle feedback submissions:
 
 ```php
@@ -150,7 +152,7 @@ SmartRate.init(MainActivity.this)
 
 ### Custom Conditions
 
-Customize when the dialog should be shown. By default, the dialog will be shown when the app is launched more than 3 times and more than 3 days after installation.
+Customize when the dialog should be shown. By default, the dialog will be shown when the app is launched 2nd times and at the 7th after a negative feedback.
 
 ```java
 SmartRate.init(MainActivity.this)
