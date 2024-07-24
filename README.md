@@ -84,7 +84,7 @@ SmartRate.init(MainActivity.this)
 
 - **`setAfterXLaunches(2)`**: Configures the dialog to show after the app has been launched a specified number of times. This can be useful for engaging users who haven't interacted with the app over multiple sessions.
 
-- **`setUrlFeedback("https://tferej.com/sendFeedback.php")`**: Configures the URL to send negative feedback, allowing you to gather insights and improve the app without affecting its visibility on the store. The following PHP script can be used on your server to handle feedback submissions:
+- **`setUrlFeedback("https://example.com/sendFeedback.php")`**: Configures the URL to send negative feedback, allowing you to gather insights and improve the app without affecting its visibility on the store. The following PHP script can be used on your server to handle feedback submissions:
 
 ```php
 <?php
