@@ -7,7 +7,9 @@
 
 SmartRate is an Android library designed to manage app ratings and feedback efficiently. SmartRate helps you collect negative feedback directly through your server, allowing you to improve your app without negatively impacting its visibility on the Play Store.
 
-![Review Screen recod flow](SmartRate Android _flow.gif)
+![Review Screen recod flow](SmartRate_Android_flow.gif)
+
+pic demo from : devblogs
 
 It provides a user-friendly and visually appealing dialog that encourages users to rate the app on Google Play. The Call-To-Action (CTA) button dynamically changes based on the user's rating:
 
