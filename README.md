@@ -1,6 +1,6 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Platform](https://img.shields.io/badge/platform-android-green.svg)](http://developer.android.com/index.html)
-[![API](https://img.shields.io/badge/API-14%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
+[![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
 [![](https://jitpack.io/v/wdikiz/SmartRate_Android.svg)](https://jitpack.io/#wdikiz/SmartRate_Android)
 
 # SmartRate Android
@@ -54,11 +54,17 @@ implementation 'com.github.wdikiz:SmartRate_Android:1.0'
 
 ### Additional Dependencies
 
-To enable all features of SmartRate, include the following dependencies:
+To enable all features of SmartRate, include the following dependencies get the last version from : 
+
 
 ```gradle
 implementation 'com.google.android.play:review:2.0.1'
 implementation 'com.android.volley:volley:1.2.1'
+```
+```gradle
+Get the last version of Volley from  : https://google.github.io/volley/
+Get the last version of review play core from  :https://developer.android.com/guide/playcore
+
 ```
 
 ## Basic Usage
@@ -187,6 +193,11 @@ SmartRate currently supports the following languages:
 
 SmartRate Android supports API level 21 and up.
 
+## Future Updates
+
+Future updates will include the ability to modify the title, messages, and all text elements in the dialog.
+
+
 ## Contributing
 
     Fork it
@@ -215,4 +226,4 @@ limitations under the License.
 
 ## Author
 
-Wdikiz - wdik@gmail.com
+Walid Zoubir - wdikiz@gmail.com
