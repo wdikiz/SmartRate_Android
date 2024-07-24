@@ -61,7 +61,7 @@ implementation 'com.android.volley:volley:1.2.1'
 SmartRate.init(MainActivity.this)
     .setAfterXLaunches(2)
     .setShowAgainAfterNegative(2)
-    .setUrlFeedback("https://tferej.com/sendFeedback.php")
+    .setUrlFeedback("https://example.com/sendFeedback.php")
     .setInAppReviewEnabled(true)
     .setLaunchReviewDirectly(true)
     .setOnCloseClickListener(() -> {
