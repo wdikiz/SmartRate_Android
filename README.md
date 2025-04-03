@@ -49,7 +49,7 @@ allprojects {
 ### Step 2: Add the dependency
 
 ```gradle
-implementation 'com.github.wdikiz:SmartRate_Android:1.0'
+implementation 'com.github.wdikiz:SmartRate_Android:2.0.0'
 ```
 
 ### Additional Dependencies
