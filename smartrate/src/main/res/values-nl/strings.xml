@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Smart rate</string>
+    <string name="smartrate_lib_name">Smart rate</string>
     <string name="rate_us">Beoordeel ons</string>
     <string name="love_this_app">Tarief</string>
     <string name="first_msg">Uw beoordeling zal ons helpen om het beter te doen.</string>

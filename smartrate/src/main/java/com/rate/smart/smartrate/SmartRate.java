@@ -10,12 +10,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.StateListDrawable;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
@@ -62,6 +65,14 @@ public class SmartRate {
     private MaterialTextView later_btn;
     private Button ctaBtn;
     private SharedPreferences.Editor editor;
+
+    private String buttonPressedColor;
+    private String buttonUnpressedColor;
+    private String textPrimaryColor;
+    private String textSecondaryColor;
+    private String backgroundColor;
+
+
     private OnCloseClick onCloseClick;
     private OnFeedbackClick onFeedbackClick;
     private int DAYS_UNTIL_PROMPT = 3; // Default number of days
@@ -79,8 +90,21 @@ public class SmartRate {
     public static SmartRate init(Context context) {
         SmartRate smartRate = new SmartRate();
         smartRate.context = context;
-        smartRate.reviewManager = ReviewManagerFactory.create(context); // Initialisation ici
+        smartRate.reviewManager = ReviewManagerFactory.create(context);
+
+        // Initialiser les couleurs par défaut depuis les ressources
+        smartRate.buttonPressedColor = colorToHex(context.getResources().getColor(R.color.smartrate_button_bg));
+        smartRate.buttonUnpressedColor = colorToHex(context.getResources().getColor(R.color.smartrate_gray));
+        smartRate.textPrimaryColor = colorToHex(context.getResources().getColor(R.color.smartrate_text_primary));
+        smartRate.textSecondaryColor = colorToHex(context.getResources().getColor(R.color.smartrate_text_secondary));
+        smartRate.backgroundColor = colorToHex(context.getResources().getColor(R.color.smartrate_white));
+
         return smartRate;
+    }
+
+    // Ajoutez cette méthode d'assistance pour convertir les couleurs int en hex
+    private static String colorToHex(int color) {
+        return String.format("#%06X", (0xFFFFFF & color));
     }
 
     public SmartRate setAfterXLaunches(int launches) {
@@ -100,6 +124,8 @@ public class SmartRate {
             return;
         View view = inflater.inflate(R.layout.view_smart_rate, new LinearLayout(context), false);
 
+        applyCustomColors(view);
+
         bindViews(view);
         initViews();
 
@@ -117,6 +143,54 @@ public class SmartRate {
         d.show();
     }
 
+
+    // Ajoutez aussi cette méthode améliorée pour applyCustomColors
+    private void applyCustomColors(View view) {
+        // Appliquer les couleurs à différents éléments
+        View background = view.findViewById(R.id.main_container);
+        if (background != null) {
+            background.setBackgroundColor(Color.parseColor(backgroundColor));
+        }
+
+        // Pour les textes, appliquer les couleurs
+        TextView title = view.findViewById(R.id.love_app);
+        if (title != null) {
+            title.setTextColor(Color.parseColor(textPrimaryColor));
+        }
+
+        // Appliquer les couleurs secondaires aux textes des étoiles
+        if (rev1Text != null) rev1Text.setTextColor(Color.parseColor(textSecondaryColor));
+        if (rev2Text != null) rev2Text.setTextColor(Color.parseColor(textSecondaryColor));
+        if (rev3Text != null) rev3Text.setTextColor(Color.parseColor(textSecondaryColor));
+        if (rev4Text != null) rev4Text.setTextColor(Color.parseColor(textSecondaryColor));
+        if (rev5Text != null) rev5Text.setTextColor(Color.parseColor(textSecondaryColor));
+
+        // Later button color
+        if (later_btn != null) {
+            later_btn.setTextColor(Color.parseColor(textSecondaryColor));
+        }
+
+        // Pour les boutons CTA
+        Button ctaButton = view.findViewById(R.id.cta_btn);
+        if (ctaButton != null) {
+            if (ctaButton.isEnabled()) {
+                // Si le bouton est activé, on utilise la couleur "pressed" (vert)
+                GradientDrawable enabledBackground = new GradientDrawable();
+                enabledBackground.setColor(Color.parseColor(buttonPressedColor));
+                enabledBackground.setCornerRadius(16);
+                ctaButton.setBackground(enabledBackground);
+            } else {
+                // Si le bouton est désactivé, on utilise la couleur "unpressed" (bleu)
+                GradientDrawable disabledBackground = new GradientDrawable();
+                disabledBackground.setColor(Color.parseColor(buttonUnpressedColor));
+                disabledBackground.setCornerRadius(16);
+                ctaButton.setBackground(disabledBackground);
+            }
+
+            ctaButton.setTextColor(Color.WHITE); // Texte blanc pour contraste
+        }
+
+    }
     private void bindViews(View view) {
         imgRev1 = view.findViewById(R.id.rev1_img);
         imgRev2 = view.findViewById(R.id.rev2_img);
@@ -137,7 +211,26 @@ public class SmartRate {
     private static String getApplicationName(Context context) {
         ApplicationInfo applicationInfo = context.getApplicationInfo();
         int stringId = applicationInfo.labelRes;
-        return stringId == 0 ? applicationInfo.nonLocalizedLabel.toString() : context.getString(stringId);
+        String appName;
+        try {
+            appName = stringId == 0 ? applicationInfo.nonLocalizedLabel.toString() : context.getString(stringId);
+        } catch (Exception e) {
+            appName = context.getString(R.string.smartrate_lib_name);
+        }
+        // Si l'appName est celui de votre bibliothèque, utilisez la ressource renommée
+        if (appName.equals(context.getString(R.string.smartrate_lib_name))) {
+            try {
+                // Tenter d'obtenir le vrai nom de l'application hôte
+                PackageManager packageManager = context.getPackageManager();
+                String hostAppName = packageManager.getApplicationLabel(
+                        packageManager.getApplicationInfo(context.getPackageName(), 0)).toString();
+                return hostAppName;
+            } catch (Exception e) {
+                return appName;
+            }
+        }
+
+        return appName;
     }
 
     private void sendEmail() {
@@ -157,6 +250,15 @@ public class SmartRate {
         String loveThisApp = context.getString(R.string.love_this_app) + " " + getApplicationName(context) + "?";
         appTitle.setText(loveThisApp);
         setGrayStars(); // Initialement, toutes les étoiles sont grises
+
+        // Désactiver explicitement le bouton au démarrage
+        ctaBtn.setEnabled(false);
+
+        // Créer une copie teintée du drawable round_corners_fill avec votre couleur bleue
+        GradientDrawable disabledBackground = (GradientDrawable) context.getResources()
+                .getDrawable(R.drawable.round_corners_fill).mutate();
+        disabledBackground.setColor(Color.parseColor(buttonUnpressedColor)); // Couleur bleue
+        ctaBtn.setBackground(disabledBackground);
 
         imgRev1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -238,6 +340,15 @@ public class SmartRate {
         resetTextStyleAndColor(rev3Text);
         resetTextStyleAndColor(rev4Text);
         resetTextStyleAndColor(rev5Text);
+
+        // Désactiver le bouton et appliquer la couleur par défaut
+        ctaBtn.setEnabled(false);
+
+        // Utiliser le drawable défini dans le XML comme base et le teinter avec la couleur désactivée
+        GradientDrawable disabledBackground = (GradientDrawable) context.getResources()
+                .getDrawable(R.drawable.round_corners_fill_gray).mutate();
+        ctaBtn.setBackground(disabledBackground);
+        ctaBtn.setTextColor(context.getResources().getColor(R.color.smartrate_dim));
     }
 
     private void resetTextStyleAndColor(TextView textView) {
@@ -259,19 +370,21 @@ public class SmartRate {
     private int getColorForStar(int starCount) {
         switch (starCount) {
             case 1:
-                return Color.parseColor("#ED3450");
+                return context.getResources().getColor(R.color.smartrate_star1_color);
             case 2:
-                return Color.parseColor("#FF801E");
+                return context.getResources().getColor(R.color.smartrate_star2_color);
             case 3:
-                return Color.parseColor("#FFD12C");
+                return context.getResources().getColor(R.color.smartrate_star3_color);
             case 4:
-                return Color.parseColor("#ADDB17");
+                return context.getResources().getColor(R.color.smartrate_star4_color);
             case 5:
-                return Color.parseColor("#4ECF58");
+                return context.getResources().getColor(R.color.smartrate_star5_color);
             default:
-                return Color.GRAY;
+                return context.getResources().getColor(R.color.smartrate_grey_star);
         }
     }
+
+
 
     private ImageView getImageViewForStar(int starIndex) {
         switch (starIndex) {
@@ -322,16 +435,24 @@ public class SmartRate {
         textView.setTypeface(null, Typeface.BOLD);
     }
 
+    // Modifiez la méthode updateCtaButton pour utiliser les ressources directement
     private void updateCtaButton(int starCount) {
         if (starCount <= 3) {
             ctaBtn.setText(context.getResources().getText(R.string.write_feedback));
             ctaBtn.setEnabled(true);
-            ctaBtn.setBackground(context.getResources().getDrawable(R.drawable.round_corners_fill));
+
+            // Utiliser le drawable défini dans le XML comme base et le teinter avec la couleur activée
+            GradientDrawable enabledBackground = (GradientDrawable) context.getResources()
+                    .getDrawable(R.drawable.round_corners_fill).mutate();
+            enabledBackground.setColor(Color.parseColor(buttonPressedColor));
+            ctaBtn.setBackground(enabledBackground);
+            ctaBtn.setTextColor(context.getResources().getColor(R.color.smartrate_button_text));
+
             ctaBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showFeedbackDialog(); // Appeler showFeedbackDialog() pour afficher le formulaire de feedback
-                    d.dismiss(); // Dismiss SmartRate dialog
+                    showFeedbackDialog();
+                    d.dismiss();
                     recordNegativeFeedback(context);
                 }
             });
@@ -391,6 +512,7 @@ public class SmartRate {
         LayoutInflater inflater = LayoutInflater.from(context);
         if (inflater == null) return;
         View succesView = inflater.inflate(R.layout.view_succes, null);
+        applyCustomColors(succesView);
 
         succesDialog.setContentView(succesView);
 
@@ -421,12 +543,15 @@ public class SmartRate {
         if (inflater == null) return;
         View feedbackView = inflater.inflate(R.layout.view_feedback, null);
 
+        // Appliquer les couleurs personnalisées
+        applyCustomColors(feedbackView);
+
         feedbackDialog.setContentView(feedbackView);
 
         WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
         Window window = feedbackDialog.getWindow();
         if (window != null) {
-            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); // Fond transparent
+            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             layoutParams.copyFrom(window.getAttributes());
             layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
             layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
@@ -437,6 +562,15 @@ public class SmartRate {
         final EditText feedbackMessage = feedbackView.findViewById(R.id.feedback_message);
         Button submitButton = feedbackView.findViewById(R.id.feedback_submit);
         ImageView cancelButton = feedbackView.findViewById(R.id.feedback_cancel);
+
+        // Initialiser le bouton submit en état désactivé avec la couleur bleue
+        submitButton.setEnabled(false);
+        GradientDrawable disabledBackground = (GradientDrawable) context.getResources()
+                .getDrawable(R.drawable.round_corners_fill_gray).mutate();
+        disabledBackground.setColor(Color.parseColor(buttonUnpressedColor));
+        submitButton.setBackground(disabledBackground);
+        submitButton.setTextColor(Color.WHITE);
+
         feedbackMessage.setHint(R.string.write_tour_feedback_here);
 
         feedbackMessage.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -484,11 +618,19 @@ public class SmartRate {
             public void afterTextChanged(Editable s) {
                 boolean isEnabled = s.length() > 0;
                 submitButton.setEnabled(isEnabled);
+
                 if (isEnabled) {
-                    submitButton.setEnabled(true);
-                    submitButton.setBackground(context.getResources().getDrawable(R.drawable.round_corners_fill));
+                    // Bouton activé - utiliser la couleur verte
+                    GradientDrawable enabledBackground = (GradientDrawable) context.getResources()
+                            .getDrawable(R.drawable.round_corners_fill).mutate();
+                    enabledBackground.setColor(Color.parseColor(buttonPressedColor));
+                    submitButton.setBackground(enabledBackground);
                 } else {
-                    submitButton.setBackground(context.getResources().getDrawable(R.drawable.round_corners_fill_gray));
+                    // Bouton désactivé - utiliser la couleur bleue
+                    GradientDrawable disabledBackground = (GradientDrawable) context.getResources()
+                            .getDrawable(R.drawable.round_corners_fill_gray).mutate();
+                    disabledBackground.setColor(Color.parseColor(buttonUnpressedColor));
+                    submitButton.setBackground(disabledBackground);
                 }
             }
         });
@@ -666,6 +808,31 @@ public class SmartRate {
         editor.putBoolean("DialogClosedWithoutAction", true);
         editor.putLong("lastCloseWithoutActionTime", System.currentTimeMillis());
         editor.apply();
+    }
+
+    public SmartRate setColorButtonPressed(String hexColor) {
+        this.buttonPressedColor = hexColor;
+        return this;
+    }
+
+    public SmartRate setColorButtonUnpressed(String hexColor) {
+        this.buttonUnpressedColor = hexColor;
+        return this;
+    }
+
+    public SmartRate setColorTextPrimary(String hexColor) {
+        this.textPrimaryColor = hexColor;
+        return this;
+    }
+
+    public SmartRate setColorTextSecondary(String hexColor) {
+        this.textSecondaryColor = hexColor;
+        return this;
+    }
+
+    public SmartRate setColorBackground(String hexColor) {
+        this.backgroundColor = hexColor;
+        return this;
     }
 
     public interface OnCloseClick {

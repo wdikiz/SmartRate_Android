@@ -5,5 +5,5 @@
     <corners android:radius="8dp" />
     <solid
         android:width="2dp"
-        android:color="@color/yellow" />
+        android:color="@color/smartrate_yellow" />
 </shape>

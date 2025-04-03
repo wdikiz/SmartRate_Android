@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="main_color">#3C3F41</color>
-    <color name="light_bg">#F6F6F6</color>
-    <color name="dim">#80000000</color>
-    <color name="gray">#DDDDDD</color>
-    <color name="white">#ffffff</color>
-    <color name="yellow">#FFD164</color>
-    <color name="green">#20BE79</color>
-    <color name="grey_star">#C1C1C1</color>
+    <color name="smartrate_main_color">#3C3F41</color>
+    <color name="smartrate_light_bg">#F6F6F6</color>
+    <color name="smartrate_dim">#80000000</color>
+    <color name="smartrate_gray">#DDDDDD</color>
+    <color name="smartrate_white">#ffffff</color>
+    <color name="smartrate_yellow">#FFD164</color>
+    <color name="smartrate_green">#20BE79</color>
+    <color name="smartrate_grey_star">#C1C1C1</color>
+
+    <!-- Couleurs des étoiles -->
+    <color name="smartrate_star1_color">#ED3450</color>
+    <color name="smartrate_star2_color">#FF801E</color>
+    <color name="smartrate_star3_color">#FFD12C</color>
+    <color name="smartrate_star4_color">#ADDB17</color>
+    <color name="smartrate_star5_color">#4ECF58</color>
+
+    <!-- Couleurs de texte supplémentaires -->
+    <color name="smartrate_text_primary">#1E1F22</color>
+    <color name="smartrate_text_secondary">#757575</color>
+    <color name="smartrate_button_text">#FFFFFF</color>
+    <color name="smartrate_button_disabled">#CCCCCC</color>
+    <color name="smartrate_button_bg">#FFD164</color>
+    <color name="smartrate_button_bg_disabled">#AAAAAA</color>
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Smart rate</string>
+    <string name="smartrate_lib_name">Smart rate</string>
     <string name="rate_us">تقييم التطبيق</string>
     <string name="love_this_app">اعجبني التطبيق</string>
     <string name="first_msg">تقييمك سيساعدنا على القيام بعمل أفضل.</string>

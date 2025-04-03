@@ -19,10 +19,11 @@
         >
 
         <LinearLayout
+            android:id="@+id/main_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="?android:colorBackground"
+            android:background="@color/smartrate_white"
             android:clickable="true"
             android:focusable="true"
             android:gravity="bottom"
@@ -69,7 +70,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/how_can_we_improve_the_application"
-        android:textColor="#1E1F22"
+        android:textColor="@color/smartrate_text_primary"
         />
 
 
@@ -154,7 +155,7 @@
                 android:layout_margin="20dp"
                 android:background="@drawable/round_corners_fill_gray"
                 android:text="@string/submit_feedback"
-                android:textColor="@color/dim"
+                android:textColor="@color/smartrate_dim"
                 />
 
         </LinearLayout>

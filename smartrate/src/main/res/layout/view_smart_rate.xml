@@ -16,10 +16,11 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/main_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="?android:colorBackground"
+            android:background="@color/smartrate_white"
             android:clickable="true"
             android:focusable="true"
             android:gravity="bottom"
@@ -36,7 +37,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="6dp"
-                    android:backgroundTint="#151C25"
+                    android:backgroundTint="@color/smartrate_main_color"
                     android:src="@drawable/ic_close"
                     android:layout_alignParentEnd="true"/>
 
@@ -82,7 +83,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@string/poor"
-                        android:textColor="#000000"/>
+                        android:textColor="@color/smartrate_main_color" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -190,13 +191,13 @@
                 android:id="@+id/cta_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:layout_marginEnd="20dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="15dp"
                 android:background="@drawable/round_corners_fill_gray"
                 android:text="@string/rate"
-                android:textColor="@color/dim"/>
+                android:textColor="@color/smartrate_dim" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/txt_later"

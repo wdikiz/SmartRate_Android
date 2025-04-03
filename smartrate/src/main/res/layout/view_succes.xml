@@ -19,10 +19,11 @@
         >
 
         <LinearLayout
+            android:id="@+id/main_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="?android:colorBackground"
+            android:background="@color/smartrate_white"
             android:clickable="true"
             android:focusable="true"
             android:gravity="bottom"
@@ -94,7 +95,7 @@
                     android:layout_height="match_parent"
                     android:text="@string/thank_you"
                     android:layout_gravity="center"
-                    android:textColor="#1E1F22"
+                    android:textColor="@color/smartrate_text_primary"
                     android:textStyle="bold"
                     android:textSize="20sp"
                      />

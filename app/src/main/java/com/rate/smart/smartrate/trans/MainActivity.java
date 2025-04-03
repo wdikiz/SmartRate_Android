@@ -36,9 +36,14 @@ public class MainActivity extends AppCompatActivity {
         SmartRate.init(MainActivity.this)
                 .setAfterXLaunches(2)
                 .setShowAgainAfterNegative(2)
-                .setUrlFeedback("https://wwww.exemple.com/sendFeedback.php")
                 .setInAppReviewEnabled(true)
                 .setLaunchReviewDirectly(true)
+                .setUrlFeedback("https://wwww.exemple.com/sendFeedback.php")
+//                .setColorButtonPressed("#E53E30")        // Couleur du bouton pressé (vert)
+//                .setColorButtonUnpressed("#955444")      // Couleur du bouton non pressé (bleu ciel)
+//                .setColorTextPrimary("#CA64EA")          // Couleur principale du texte
+//                .setColorTextSecondary("#FF6C37")        // Couleur secondaire du texte
+//                .setColorBackground("#5AA2AE")           // Couleur d'arrière-plan des dialogues
                 .setOnCloseClickListener(() -> {
                     SharedPreferences prefs1 = MainActivity.this.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
                     prefs1.edit().putBoolean("DialogClosedWithoutAction", true).apply();
@@ -60,6 +65,11 @@ public class MainActivity extends AppCompatActivity {
                         .setShowAgainAfterNegative(2)
                         .setInAppReviewEnabled(true)
                         .setLaunchReviewDirectly(true)
+//                        .setColorButtonPressed("#E53E30")        // Couleur du bouton pressé (vert)
+//                        .setColorButtonUnpressed("#955444")      // Couleur du bouton non pressé (bleu ciel)
+//                        .setColorTextPrimary("#CA64EA")          // Couleur principale du texte
+//                        .setColorTextSecondary("#FF6C37")        // Couleur secondaire du texte
+//                        .setColorBackground("#5AA2AE")           // Couleur d'arrière-plan des dialogues
                         .setUrlFeedback("https://wwww.exemple.com/sendFeedback.php")
                         .setOnCloseClickListener(() -> {
                             // L'utilisateur a fermé le dialogue; ne pas le montrer à nouveau dans cette session

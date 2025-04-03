@@ -6,5 +6,5 @@
     <corners android:radius="8dp" />
     <solid
         android:width="4dp"
-        android:color="@color/gray" />
+        android:color="@color/smartrate_gray" />
 </shape>
