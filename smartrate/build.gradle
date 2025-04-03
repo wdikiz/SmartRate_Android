@@ -42,7 +42,7 @@ afterEvaluate {
             release(MavenPublication) {
                 groupId = 'com.github.wdikiz'
                 artifactId = 'smartrate'
-                version = '1.1'
+                version = '1.2'
                 artifact("$buildDir/outputs/aar/smartrate-release.aar")
             }
         }
