@@ -148,6 +148,28 @@ SmartRate.init(MainActivity.this)
     .build();
 ```
 
+
+## Customizing Colors
+
+SmartRate allows you to fully customize the color scheme of the rating dialog to match your app's branding:
+
+```java
+SmartRate.init(MainActivity.this)
+    // Standard configuration options
+    .setAfterXLaunches(2)
+    .setShowAgainAfterNegative(2)
+    .setUrlFeedback("https://example.com/sendFeedback.php")
+    .setInAppReviewEnabled(true)
+    
+    // Color customization options
+    .setColorButtonPressed("#E53E30")        // Color for active buttons (Submit/Rate)
+    .setColorButtonUnpressed("#955444")      // Color for inactive buttons (when disabled)
+    .setColorTextPrimary("#CA64EA")          // Primary text color (title: "Do you love this app?")
+    .setColorTextSecondary("#FF6C37")        // Secondary text color (star labels: "Poor", "Bad", etc.)
+    .setColorBackground("#5AA2AE")           // Background color for all dialog windows
+    
+    .build();
+
 ## Advanced Usage
 
 ### Custom Conditions
