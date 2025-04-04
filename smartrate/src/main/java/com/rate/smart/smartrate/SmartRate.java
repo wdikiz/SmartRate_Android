@@ -57,6 +57,8 @@ import java.util.Map;
 
 public class SmartRate {
 
+
+
     private String title;
     private String customTitle;
 
@@ -120,7 +122,8 @@ public class SmartRate {
     }
 
     public void show() {
-        d = new Dialog(context);
+        d = new Dialog(context, R.style.SmartRateDialog); // Utiliser votre style dédié
+
         LayoutInflater inflater = LayoutInflater.from(context);
         if (inflater == null)
             return;
