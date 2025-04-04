@@ -64,11 +64,12 @@ public class MainActivity extends AppCompatActivity {
                         .setAfterXLaunches(2)
                         .setShowAgainAfterNegative(2)
                         .setInAppReviewEnabled(true)
-                        .setColorButtonPressed("#E53E30")        // Couleur du bouton pressé (vert)
-                        .setColorButtonUnpressed("#955444")      // Couleur du bouton non pressé (bleu ciel)
-                        .setColorTextPrimary("#CA64EA")          // Couleur principale du texte
-                        .setColorTextSecondary("#FF6C37")        // Couleur secondaire du texte
-                        .setColorBackground("#5AA2AE")           // Couleur d'arrière-plan des dialogues              .setLaunchReviewDirectly(true)
+//                        .setColorButtonPressed("#E53E30")        // Couleur du bouton pressé (vert)
+//                        .setColorButtonUnpressed("#955444")      // Couleur du bouton non pressé (bleu ciel)
+//                        .setColorTextPrimary("#CA64EA")          // Couleur principale du texte
+//                        .setColorTextSecondary("#FF6C37")        // Couleur secondaire du texte
+//                        .setColorBackground("#5AA2AE")           // Couleur d'arrière-plan des dialogues//
+                         .setLaunchReviewDirectly(true)
                         .setUrlFeedback("https://wwww.exemple.com/sendFeedback.php")
                         .setOnCloseClickListener(() -> {
                             // L'utilisateur a fermé le dialogue; ne pas le montrer à nouveau dans cette session

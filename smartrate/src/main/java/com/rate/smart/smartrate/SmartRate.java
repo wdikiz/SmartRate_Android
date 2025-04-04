@@ -58,6 +58,8 @@ import java.util.Map;
 public class SmartRate {
 
     private String title;
+    private String customTitle;
+
     private Context context;
     private Dialog d;
     private ImageView imgRev1, imgRev2, imgRev3, imgRev4, imgRev5, closeBtn;
@@ -247,8 +249,13 @@ public class SmartRate {
     }
 
     private void initViews() {
-        String loveThisApp = context.getString(R.string.love_this_app) + " " + getApplicationName(context) + "?";
-        appTitle.setText(loveThisApp);
+        String titleText;
+        if (customTitle != null && !customTitle.isEmpty()) {
+            titleText = customTitle;
+        } else {
+            titleText = context.getString(R.string.love_this_app);
+        }
+        appTitle.setText(titleText);
         setGrayStars(); // Initialement, toutes les étoiles sont grises
 
         // Désactiver explicitement le bouton au démarrage
@@ -265,6 +272,10 @@ public class SmartRate {
             public void onClick(View v) {
                 setStarColors(1);
                 updateCtaButton(1);
+                // Notifier via le listener d'évaluation (même pour 1 étoile)
+                if (onRateClick != null) {
+                    onRateClick.onRateClickListener();
+                }
             }
         });
 
@@ -273,6 +284,10 @@ public class SmartRate {
             public void onClick(View v) {
                 setStarColors(2);
                 updateCtaButton(2);
+                // Notifier via le listener d'évaluation (même pour 2 étoiles)
+                if (onRateClick != null) {
+                    onRateClick.onRateClickListener();
+                }
             }
         });
 
@@ -281,6 +296,10 @@ public class SmartRate {
             public void onClick(View v) {
                 setStarColors(3);
                 updateCtaButton(3);
+                // Notifier via le listener d'évaluation (même pour 3 étoiles)
+                if (onRateClick != null) {
+                    onRateClick.onRateClickListener();
+                }
             }
         });
 
@@ -288,6 +307,10 @@ public class SmartRate {
             @Override
             public void onClick(View v) {
                 setStarColors(4);
+                // Notifier via le listener d'évaluation
+                if (onRateClick != null) {
+                    onRateClick.onRateClickListener();
+                }
                 handleReviewOrFeedback();
                 recordPositiveReview(context);
                 d.dismiss();
@@ -298,6 +321,10 @@ public class SmartRate {
             @Override
             public void onClick(View v) {
                 setStarColors(5);
+                // Notifier via le listener d'évaluation
+                if (onRateClick != null) {
+                    onRateClick.onRateClickListener();
+                }
                 handleReviewOrFeedback();
                 recordPositiveReview(context);
                 d.dismiss();
@@ -441,12 +468,16 @@ public class SmartRate {
             ctaBtn.setText(context.getResources().getText(R.string.write_feedback));
             ctaBtn.setEnabled(true);
 
-            // Utiliser le drawable défini dans le XML comme base et le teinter avec la couleur activée
-            GradientDrawable enabledBackground = (GradientDrawable) context.getResources()
-                    .getDrawable(R.drawable.round_corners_fill).mutate();
+            // Créer un drawable explicite au lieu d'utiliser celui du XML
+            GradientDrawable enabledBackground = new GradientDrawable();
             enabledBackground.setColor(Color.parseColor(buttonPressedColor));
+            enabledBackground.setCornerRadius(16);
+
+            // Forcer l'application du drawable comme background
             ctaBtn.setBackground(enabledBackground);
-            ctaBtn.setTextColor(context.getResources().getColor(R.color.smartrate_button_text));
+
+            // Forcer la couleur du texte
+            ctaBtn.setTextColor(Color.WHITE);
 
             ctaBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -457,6 +488,9 @@ public class SmartRate {
                 }
             });
         } else {
+            if (onRateClick != null) {
+                onRateClick.onRateClickListener();
+            }
             handleReviewOrFeedback();
             recordPositiveReview(context);
             dontShowAgain(true, context);
@@ -565,9 +599,12 @@ public class SmartRate {
 
         // Initialiser le bouton submit en état désactivé avec la couleur bleue
         submitButton.setEnabled(false);
-        GradientDrawable disabledBackground = (GradientDrawable) context.getResources()
-                .getDrawable(R.drawable.round_corners_fill_gray).mutate();
+
+
+        GradientDrawable disabledBackground = new GradientDrawable();
         disabledBackground.setColor(Color.parseColor(buttonUnpressedColor));
+        disabledBackground.setCornerRadius(16);
+
         submitButton.setBackground(disabledBackground);
         submitButton.setTextColor(Color.WHITE);
 
@@ -614,22 +651,23 @@ public class SmartRate {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
             }
 
+
             @Override
             public void afterTextChanged(Editable s) {
                 boolean isEnabled = s.length() > 0;
                 submitButton.setEnabled(isEnabled);
 
                 if (isEnabled) {
-                    // Bouton activé - utiliser la couleur verte
-                    GradientDrawable enabledBackground = (GradientDrawable) context.getResources()
-                            .getDrawable(R.drawable.round_corners_fill).mutate();
+                    // Bouton activé - créer un nouveau drawable avec la couleur explicite
+                    GradientDrawable enabledBackground = new GradientDrawable();
                     enabledBackground.setColor(Color.parseColor(buttonPressedColor));
+                    enabledBackground.setCornerRadius(16);
                     submitButton.setBackground(enabledBackground);
                 } else {
-                    // Bouton désactivé - utiliser la couleur bleue
-                    GradientDrawable disabledBackground = (GradientDrawable) context.getResources()
-                            .getDrawable(R.drawable.round_corners_fill_gray).mutate();
+                    // Bouton désactivé - créer un nouveau drawable avec la couleur explicite
+                    GradientDrawable disabledBackground = new GradientDrawable();
                     disabledBackground.setColor(Color.parseColor(buttonUnpressedColor));
+                    disabledBackground.setCornerRadius(16);
                     submitButton.setBackground(disabledBackground);
                 }
             }
@@ -839,10 +877,6 @@ public class SmartRate {
         void onCloseClickListener();
     }
 
-    public interface OnFeedbackClick {
-        void onFeedBackClickListener();
-    }
-
     public SmartRate setOnCloseClickListener(OnCloseClick onCloseClick) {
         this.onCloseClick = onCloseClick;
         return this;
@@ -850,6 +884,27 @@ public class SmartRate {
 
     public SmartRate setOnFeedbackClickListener(OnFeedbackClick onFeedbackClick) {
         this.onFeedbackClick = onFeedbackClick;
+        return this;
+    }
+    public SmartRate setTitle(String title) {
+        this.customTitle = title;
+        return this;
+    }
+    // 1. Ajouter les deux interfaces pour gérer les deux types d'évaluations
+    public interface OnRateClick {
+        void onRateClickListener();
+    }
+
+    public interface OnFeedbackClick {
+        void onFeedBackClickListener();
+    }
+
+    // 2. Ajouter un champ pour stocker le listener d'évaluation positive
+    private OnRateClick onRateClick;
+
+    // 3. Ajouter la méthode pour définir le listener d'évaluation positive
+    public SmartRate setOnRateClickListener(OnRateClick onRateClick) {
+        this.onRateClick = onRateClick;
         return this;
     }
 }
